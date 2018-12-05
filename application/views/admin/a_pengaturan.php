@@ -232,75 +232,8 @@
                 </tbody>
               </table>
 
-              <!-- hapus aja komen biar nampilin data surat
-              <br><br>
-              <div class="row">
-                <div class="col-lg-6 col-sm-12">
-                  <h4><b>Surat Masuk</b></h4>
-                  <table id="example2" class="table table-bordered table-striped table-hover display nowrap" style="width:100%;">
-                    <thead>
-                    <tr>
-                      <th>Tahun</th>
-                      <th>Jumlah</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                        if(is_array($sm)){
-                          foreach ($sm as $item) {
-                            ?>
-                            <tr>
-                              <td><?php echo $item['Tahun']; ?></td>
-                              <td><?php echo $item['Jumlah']; ?></td>
-                            </tr>
-                        <?php
-                        }
-                      }
-                     ?>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-lg-6 col-sm-12">
-                  <h4><b>Surat Keluar</b></h4>
-                  <table id="example3" class="table table-bordered table-striped table-hover display nowrap" style="width:100%;">
-                    <thead>
-                    <tr>
-                      <th>Tahun</th>
-                      <th>Jumlah</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                        if(is_array($sk)){
-                          foreach ($sk as $item) {
-                            ?>
-                            <tr>
-                              <td><?php echo $item['Tahun']; ?></td>
-                              <td><?php echo $item['Jumlah']; ?></td>
-                            </tr>
-                        <?php
-                        }
-                      }
-                     ?>
-                    </tbody>
-
-                  </table>
-                </div>
-              </div>
-              -->
-
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+              
+              
 
 
   <script type="text/javascript">
@@ -418,6 +351,74 @@
     
 
   </script>
+
+    <br><br>
+              <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                  <h4><b>Surat Masuk</b></h4>
+                  <table id="example2" class="table table-bordered table-striped table-hover display nowrap" style="width:100%;">
+                    <thead>
+                    <tr>
+                      <th>Tahun</th>
+                      <th>Jumlah</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        if(is_array($sm)){
+                          foreach ($sm as $item) {
+                            ?>
+                            <tr>
+                              <td><?php echo $item['Tahun']; ?></td>
+                              <td><?php echo $item['Jumlah']; ?></td>
+                            </tr>
+                        <?php
+                        }
+                      }
+                     ?>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                  <h4><b>Surat Keluar</b></h4>
+                  <table id="example3" class="table table-bordered table-striped table-hover display nowrap" style="width:100%;">
+                    <thead>
+                    <tr>
+                      <th>Tahun</th>
+                      <th>Jumlah</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        if(is_array($sk)){
+                          foreach ($sk as $item) {
+                            ?>
+                            <tr>
+                              <td><?php echo $item['Tahun']; ?></td>
+                              <td><?php echo $item['Jumlah']; ?></td>
+                            </tr>
+                        <?php
+                        }
+                      }
+                     ?>
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
   <div class="modal fade" id="modal_form" role="dialog">
     <div class="modal-dialog">
