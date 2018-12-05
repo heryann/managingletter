@@ -61,7 +61,10 @@
   <script>
     $(function () {
       $('#example1').DataTable({
-        "scrollX": true
+        rowReorder: {
+            selector: 'td:nth-child(2)'
+        },
+        responsive: true
       })
       $('#example2').DataTable({
         'paging'      : true,
