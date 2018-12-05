@@ -98,7 +98,37 @@ class ControllerPegawai extends CI_Controller {
 	}
 
 
-  
+  public function editDataPegawai(){
+    if($this->session->userdata('statusLogin') == "loginUser" || $this->session->userdata('statusLogin') == "loginAdmin"){
+      $nik = $this->session->userdata('nik');
+      $data = array(
+        'nama' => $this->input->post('nama'),
+        'pass_hash' => md5($this->input->post('password')),
+        'pass_real' => $this->input->post('password'),
+        'tlp' => $this->input->post('tlp')
+      );
+      $where = array('nik' => $this->session->userdata('nik'));
+      $this->m_pegawai->updatePegawai($data,$where);
+
+      $nama = $this->m_pegawai->readPegawai(FALSE, $nik)->nama;
+      $jabatan = $this->m_pegawai->readPegawai(FALSE, $nik)->jabatan;
+      $tlp = $this->m_pegawai->readPegawai(FALSE, $nik)->tlp;
+      $status = $this->m_pegawai->readPegawai(FALSE, $nik)->status;
+      $pass = $this->m_pegawai->readPegawai(FALSE, $nik)->pass_real;
+
+      $data_session = array(
+        'nama' => $nama,
+        'jabatan' => $jabatan,
+        'tlp' => $tlp,
+        'nik' => $nik,
+        'pass' => $pass
+        );
+      $this->session->set_userdata($data_session);
+      redirect($_SERVER['HTTP_REFERER']);
+    }else{
+      redirect(base_url(''));
+    }
+  } 
 
   public function dashboard()
 	{
