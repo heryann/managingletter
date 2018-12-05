@@ -156,12 +156,7 @@
             <span>Surat Keluar</span>
           </a>
         </li>
-        <li>
-          <a href="<?php echo base_url('admin/undangan'); ?>">
-            <i class="fa fa-calendar"></i>
-            <span>Undangan</span>
-          </a>
-        </li>
+      
         <li class="active">
           <a href="<?php echo base_url('admin/pengaturan'); ?>">
             <i class="fa fa-gears"></i>
@@ -225,7 +220,7 @@
                           <td><?php echo $item['tlp']; ?></td>
                           <td align=center>
 
-                            <!--<button class="btn btn-warning" onclick="ubah_status(<?php echo $item['idPegawai']; ?>)"><i class="fa fa-edit"></i></button>-->
+                            <button class="btn btn-warning" onclick="ubah_status(<?php echo $item['idPegawai']; ?>)"><i class="fa fa-edit"></i></button>
                             <button class="btn btn-danger" onclick="konfirmasi_hapus(<?php echo $item['idPegawai']; ?>)"><i class="fa fa-trash"></i></button>
                           </td>
                         </tr>
@@ -316,6 +311,34 @@
     var table;
     var idHapus;
 
+    function ubah_status(idPegawai)
+    {
+      save_method = 'update';
+      $('#form')[0].reset(); // reset form on modals
+       //Ajax Load data from ajax
+      $.ajax({
+        url : "<?php echo site_url('admin/ajaxPegawai/')?>/" + idPegawai,
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+            document.getElementById("namaEdit").innerHTML = data.nama;
+            document.getElementById("nikEdit").innerHTML = data.nik;
+            $('[name="nik"]').val(data.nik);
+             if (data.status == 1 ){
+                $('#form').find(':radio[name=statusLogin][value="1"]').prop('checked', true)
+            }else{
+                $('#form').find(':radio[name=statusLogin][value="0"]').prop('checked', true)
+            }
+             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+            $('.modal-title').text('Pengaturan Akun Pengguna'); // Set title to Bootstrap modal title
+         },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+    }
 
     function konfirmasi_hapus(idPegawai)
     {
@@ -346,6 +369,35 @@
     });
     }
 
+    function save()
+    {
+      var url;
+      if(save_method == 'add')
+      {
+          url = "<?php echo site_url('admin/bookadd')?>";
+      }
+      else
+      {
+          url = "<?php echo site_url('admin/ubahPegawai')?>";
+      }
+        // ajax adding data to database
+          $.ajax({
+            url : url,
+            type: "POST",
+            data: $('#form').serialize(),
+            dataType: "JSON",
+            success: function(data)
+            {
+               //if success close modal and reload ajax table
+               $('#modal_form').modal('hide');
+              location.reload();// for reload a page
+            },
+            error: function (jqXHR, textStatus, errorThrown)
+            {
+                alert('Error adding / update data');
+            }
+        });
+    }
 
     function hapus(){
       $.ajax({
@@ -366,6 +418,61 @@
     
 
   </script>
+
+  <div class="modal fade" id="modal_form" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title">Edit</h3>
+        </div>
+        <div class="modal-body form">
+          <form action="#" id="form" class="form-horizontal">
+            <input type="hidden" value="" name="nik"/>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                NIP
+              </div>
+              <div class="col-md-8">
+                <p id="nikEdit"></p>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                Nama
+              </div>
+              <div class="col-md-8">
+                <p id="namaEdit"></p>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-3">
+                Status
+              </div>
+              <div class="col-md-8">
+                <div class="form-group">
+                    <div class="col-lg-8">
+                      <label>
+                        <input type="radio" name="statusLogin" class="minimal" value="1">
+                        Aktif&nbsp;&nbsp;&nbsp;&nbsp;
+                      </label>
+                      <label>
+                        <input type="radio" name="statusLogin" value="0" class="minimal">
+                        Non Aktif
+                      </label>
+                    </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+              <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Simpan</button>
+              </form>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    <!-- End Bootstrap modal -->
 
     <div class="modal fade" id="modalHapus" role="dialog">
     <div class="modal-dialog">
