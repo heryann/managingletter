@@ -6,6 +6,7 @@ class ControllerPegawai extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->model('m_pegawai');
+    $this->load->model('m_surat');
   }
 
 	public function login()
@@ -135,8 +136,11 @@ class ControllerPegawai extends CI_Controller {
     if($this->session->userdata('statusLogin') != "loginUser"){
       redirect(base_url(''));
     }else{
-      $this->load->view('pegawai/u_dashboard');
+      $data['sm'] = $this->m_surat->countSurat(1);
+      $data['sk'] = $this->m_surat->countSurat(2);
+      $this->load->view('pegawai/u_dashboard', $data);
       $this->load->view('footer');
+      
     }
 	}
 
