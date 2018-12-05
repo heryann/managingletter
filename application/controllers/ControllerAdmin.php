@@ -41,7 +41,24 @@ class ControllerAdmin extends CI_Controller {
     echo json_encode($data);
   }
 
-
+  public function ubahStatusPegawai()
+  {
+    if($this->session->userdata('statusLogin') == "loginUser" || $this->session->userdata('statusLogin') == "loginAdmin"){
+      $data = array(
+        'status' => $this->input->post('statusLogin')
+      );
+      $where = array('nik' => $this->input->post('nik'));
+      $this->m_pegawai->updatePegawai($data,$where);
+      $this->session->set_flashdata('notisSM',
+      '  <div class="alert alert-info alert-dismissible pull-right" style="width:30%; height:50px; margin:0px 0px -10px 0px;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-edit"></i>Status Berhasil Diubah!</h4>
+      </div>');
+      echo json_encode(array("status" => TRUE));
+    }else{
+      redirect(base_url(''));
+    }
+  }
 
   public function hapusPegawai($idPegawai){
     if($this->session->userdata('statusLogin') == "loginAdmin"){
