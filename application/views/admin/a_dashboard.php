@@ -166,12 +166,6 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url('admin/undangan'); ?>">
-            <i class="fa fa-calendar"></i>
-            <span>Undangan</span>
-          </a>
-        </li>
-        <li>
           <a href="<?php echo base_url('admin/pengaturan'); ?>">
             <i class="fa fa-gears"></i>
             <span>Pengaturan</span>
@@ -229,22 +223,6 @@
             <a href="<?php echo base_url('admin/suratKeluar'); ?>" class="small-box-footer">Lihat Surat <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-
-        <div class="col-lg-3 col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>Undangan</h3>
-
-              <p>Undangan untuk Admin</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-send-o"></i>
-            </div>
-            <a href="<?php echo base_url('admin/undangan'); ?>" class="small-box-footer">Lihat Undangan <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-
         <div class="col-lg-3 col-xs-12">
           <!-- small box -->
           <div class="small-box bg-red">

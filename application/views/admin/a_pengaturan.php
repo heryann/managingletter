@@ -156,12 +156,7 @@
             <span>Surat Keluar</span>
           </a>
         </li>
-        <li>
-          <a href="<?php echo base_url('admin/undangan'); ?>">
-            <i class="fa fa-calendar"></i>
-            <span>Undangan</span>
-          </a>
-        </li>
+      
         <li class="active">
           <a href="<?php echo base_url('admin/pengaturan'); ?>">
             <i class="fa fa-gears"></i>
