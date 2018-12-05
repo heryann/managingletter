@@ -32,6 +32,10 @@
        }
       }
 
+      public function updatePegawai($data, $where){
+        return $this->db->update('pegawai', $data, $where);
+     }
+
      public function deletePegawai($idPegawai){
          return $this->db->delete('pegawai',array('idPegawai'=>$idPegawai));
      }

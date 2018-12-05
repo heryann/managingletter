@@ -254,7 +254,7 @@
                 </tr>
               </table>
               <br>
-              
+              <a data-toggle="modal" data-target="#edit-data" class="btn btn-info" style="float:left; display: inline-block; "><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;<b>EDIT</b></a>
             </div>
           </div>
           <br>
@@ -268,6 +268,67 @@
   </div>
   <!-- /.content-wrapper -->
 
+<!-- /.modal Tambah -->
+<div class="modal fade" id="edit-data">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit Data Diri</h4>
+        </div>
+        <div class="modal-body">
 
+          <form name="reg" class="form-horizontal" form action="<?php echo base_url('controllerPegawai/editDataPegawai')?>" method="post" onsubmit="return cek()">
+            <div class="form-group">
+              <label class="col-lg-3 col-sm-3 control-label">Nama</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="text" name="nama" value="<?php echo $this->session->userdata('nama'); ?>" required>
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 col-sm-3 control-label">NIP</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="text" name="nik" value="<?php echo $this->session->userdata('nik'); ?>" required disabled title="NIP TIdak Dapat Diubah">
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 col-sm-3 control-label">Telepon</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="text" name="tlp" value="<?php echo $this->session->userdata('tlp'); ?>" required>
+                </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-3 col-sm-3 control-label">password</label>
+                <div class="col-lg-9">
+                  <input class="form-control" type="password" name="password" id="myInput" value="<?php echo $this->session->userdata('pass'); ?>" required>
+                </div>
+            </div>
+            <label class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-9">
+              <label style="font-weight:normal;">
+      	        <input type="checkbox" onclick="myFunction()"/>
+      	        <i></i> Tampilkan Password
+      	      </label>
+            </div>
+
+            <label class="col-lg-3 col-sm-3 control-label"></label>
+              <div class="col-lg-9">
+                <div id="errorFormDiv" class="alert alert-warning" style="display:none;">
+                  <p id="errorForm"></p>
+                </div>
+              </div>
+              <br>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 
   
